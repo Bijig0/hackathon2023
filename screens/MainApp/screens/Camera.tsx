@@ -48,24 +48,30 @@ export default function App() {
 
   return (
     <Camera style={tw`flex-1`} type={type}>
-      <View style={tw`w-full flex-1 px-5 pt-24`}>
-        <Text style={tw`text-white text-center mb-4 text-8`}>
-          Capture Your Waste
-        </Text>
+      <View style={tw`flex-1 justify-center items-center px-5 pt-24`}>
+        <View style={tw`flex-0 basis-15`}>
+          <Text style={tw`text-white text-center text-8`}>
+            Capture Your Waste
+          </Text>
+        </View>
         <View
-          style={tw`w-full h-140 border-2 border-solid border-green-500`}
+          style={tw`w-full flex-5 border-2 border-solid border-green-500`}
         ></View>
-        <View style={tw`bg-red-600 h-full relative right-5 w-1000000`}>
-          <FlatList
-            // style={tw`flex-1 relative right-15`}
-            horizontal
-            data={data}
-            renderItem={renderItem}
-                  />
-                  <View style={tw`flex-3 bg-white`}>
-                      
-                  </View>
-          <CameraButton />
+        <View
+          style={tw`bg-black items-center flex-2 relative right-5 w-1000000`}
+        >
+          <View style={tw`flex-1`}>
+            <FlatList
+              data={data}
+              style={tw`relative left-4 mt-4`}
+              horizontal
+              renderItem={renderItem}
+            />
+          </View>
+
+          <View style={tw`flex-3`}>
+            <CameraButton />
+          </View>
         </View>
       </View>
     </Camera>
