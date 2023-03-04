@@ -31,7 +31,9 @@ const Input = ({
     <View style={style}>
       {label && <Text style={tw`text-gray-800 text-lg mb-2`}>{label}</Text>}
       <View style={tw`relative`}>
-        {leadingIcon && <View style={tw`absolute left-2`}>{leadingIcon}</View>}
+        {leadingIcon && (
+          <View style={tw`absolute left-2 z-40`}>{leadingIcon}</View>
+        )}
         <TextInput
           style={tw`bg-gray-100 border-2 rounded-md border-gray-300 py-2 px-3 pl-${
             leadingIcon ? 10 : 3.5
@@ -42,7 +44,7 @@ const Input = ({
           placeholder={placeholder}
         />
         {trailingIcon && (
-          <View style={tw`absolute right-2`}>{trailingIcon}</View>
+          <View style={tw`absolute right-2 z-40`}>{trailingIcon}</View>
         )}
       </View>
       {touched && error && <Text style={tw`text-red-500 ml-2`}>{error}</Text>}

@@ -17,7 +17,7 @@ const ForgotPassword = () => {
 
   const navigate = useNavigation();
 
-  const handleForgotPassword = () => {
+  const handleResetPassword = () => {
     // handle forgot password logic here
   };
 
@@ -52,7 +52,7 @@ const ForgotPassword = () => {
             />
           </View>
           <View style={tw`mt-8`}>
-            <Button onPress={handleForgotPassword}>Send Email</Button>
+            <Button onPress={handleResetPassword}>Reset Password</Button>
           </View>
         </View>
       </View>
