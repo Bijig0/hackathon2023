@@ -1,7 +1,12 @@
-import { create } from "twrnc";
-
-// create the customized version...
-const tw = create(require(`../../tailwind.config.js`)); // <- your path may differ
-
-// ... and then this becomes the main function your app uses
-export default tw;
+// tailwind.config.js
+module.exports = {
+  theme: {
+    screens: {
+      sm: "380px",
+      md: "420px",
+      lg: "680px",
+      // or maybe name them after devices for `tablet:flex-row`
+      tablet: "1024px",
+    },
+  },
+};
