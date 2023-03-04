@@ -61,7 +61,7 @@ export default function App() {
           style={tw`w-full flex-5 border-2 border-solid border-green-500`}
         ></View>
         <View
-          style={tw`bg-black items-center flex-2 relative right-5 w-1000000`}
+          style={tw`bg-black items-center flex-2 relative right-5 w-1000000`} 
         >
           <View style={tw`flex-1`}>
             <FlatList

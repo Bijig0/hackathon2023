@@ -39,7 +39,7 @@ const Details = () => {
         <Text style={tw`text-4 my-2 ml-2`}>6x6x4m3</Text>
       </View>
 
-      <Text style={tw`text-5 font-bold mb-1`}>
+      <Text style={tw`text-5 font-bold mt-4 mb-1`}>
         Here's how you could recycle it
       </Text>
       <FlatList

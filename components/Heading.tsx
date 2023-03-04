@@ -4,7 +4,7 @@ import tw from '../lib/tailwind'
 
 
 type Props = {}
-
+// @ts-ignore
 const Heading = ({children}) => {
     return (
         <Text style={tw`text-12 font-bold`}>{children}</Text>
