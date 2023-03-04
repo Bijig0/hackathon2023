@@ -13,6 +13,10 @@ import CameraButton from "../../../components/CameraButton";
 import Choice from "../../../components/Choice";
 import tw from "../../../lib/tailwind";
 import { useNavigation } from "@react-navigation/native";
+import CaptureSquare from "../../../assets/icons/capture-square.svg";
+import TickIcon from "../../../assets/icons/tick-svgrepo-com.svg";
+import BackIcon from "../../../assets/icons/back-svgrepo-com (2).svg";
+import CaptureRectangle from "../../../assets/icons/capture-rectangle.svg";
 
 export default function App() {
   const [type, setType] = useState(CameraType.back);
@@ -36,10 +40,6 @@ export default function App() {
     );
   }
 
-  const onBackPress = () => {
-    navigation.goBack();
-  };
-
   const data = ["Foods and drinks", "Alcohol", "Plants and beverages"];
 
   const renderItem = ({ item: text }) => {
@@ -48,22 +48,12 @@ export default function App() {
 
   return (
     <Camera style={tw`flex-1`} type={type}>
-      <View style={tw`flex-1 justify-center items-center px-5 pt-24`}>
-        <View style={tw`flex-0 basis-15`}>
-          <TouchableOpacity onPress={onBackPress}>
-            <Text>Go Back</Text>
-          </TouchableOpacity>
-          <Text style={tw`text-white text-center text-8`}>
-            Capture Your Waste
-          </Text>
-        </View>
+      <View style={tw`flex-1 justify-center items-center pt-16`}>
+        <CaptureRectangle width={500} height={575} />
         <View
-          style={tw`w-full flex-5 border-2 border-solid border-green-500`}
-        ></View>
-        <View
-          style={tw`bg-black items-center flex-2 relative right-5 w-1000000`} 
+          style={tw`bg-black items-center flex-2 relative right-5 w-1000000`}
         >
-          <View style={tw`flex-1`}>
+          <View style={tw`flex-1 mb-4`}>
             <FlatList
               data={data}
               style={tw`relative left-4 mt-4`}

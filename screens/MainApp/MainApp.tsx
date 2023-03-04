@@ -9,10 +9,11 @@ import {
 } from "@react-navigation/bottom-tabs";
 // import useMainAppIsReady from "../../hooks/useAppIsReady";
 import * as SplashScreen from "expo-splash-screen";
-import CameraScreen from "./screens/Camera";
-import Home from "./screens/Home";
+import CameraScreen from "./CameraStack/Camera";
+import Home from "./screens/Home/Home";
 import Profile from "./screens/Profile";
 import Details from "./screens/Details";
+import CameraStack from "./CameraStack/CameraStack";
 
 // SplashScreen.preventAutoHideAsync()
 
@@ -46,7 +47,7 @@ export default function MainApp() {
       <Tab.Screen name="Details" component={Details} />
       <Tab.Screen
         name="CameraScreen"
-        component={CameraScreen}
+        component={CameraStack}
         navigationKey="CameraScreen"
         options={{
           lazy: false,

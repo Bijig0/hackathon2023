@@ -1,9 +1,9 @@
 import React from "react";
 import { FlatList, View, Text, Image } from "react-native";
-import tw from "../../../lib/tailwind";
-import Card from "../../../components/Card";
-import AppBox from "../../../components/AppBox";
-import Heading from "../../../components/Heading";
+import tw from "../../../../lib/tailwind";
+import Card from "../../../../components/Card";
+import AppBox from "../../../../components/AppBox";
+import Heading from "../../../../components/Heading";
 
 type Props = {};
 
