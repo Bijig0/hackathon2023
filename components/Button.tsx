@@ -11,14 +11,18 @@ interface ButtonProps extends TouchableOpacityProps {
     | 'danger'
     | 'warning';
   children: React.ReactNode;
+  isFullWidth?: boolean;
 }
 
 export const Button = ({
   variant = 'primary',
   children,
+  isFullWidth,
   ...props
 }: ButtonProps) => {
-  const buttonStyles = tw`rounded-md py-2 px-4`;
+  const buttonStyles = tw`rounded-md py-2 px-4 ${
+    isFullWidth ? 'w-full' : 'w-auto'
+  }`;
 
   let selectedStyles = [];
 

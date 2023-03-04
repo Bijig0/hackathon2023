@@ -24,11 +24,6 @@ const ResetPasswordScreen = () => {
           onChangeText={(text) => setNewPassword(text)}
           value={newPassword}
         />
-        <Input
-          label="Password"
-          onChangeText={(text) => setNewPassword(text)}
-          value={newPassword}
-        />
         <TextInput
           style={tw`bg-gray-100 border-2 border-gray-300 p-2 mb-4`}
           placeholder="Confirm New Password"
