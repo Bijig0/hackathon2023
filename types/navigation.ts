@@ -8,7 +8,7 @@ declare global {
 
   type MainAppParamList = {
     Home: undefined;
-    Camera: undefined;
+    CameraScreen: undefined;
     Profile: undefined;
     // Find a way to delete these below types, right now it throws an error
   };
