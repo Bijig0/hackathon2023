@@ -20,7 +20,7 @@ export const Button = ({
   isFullWidth,
   ...props
 }: ButtonProps) => {
-  const buttonStyles = tw`rounded-md py-2 px-4 ${
+  const buttonStyles = tw`rounded-md py-2.5 px-4 ${
     isFullWidth ? 'w-full' : 'w-auto'
   }`;
 
@@ -31,7 +31,7 @@ export const Button = ({
       selectedStyles.push(buttonStyles, tw`bg-blue-500`);
       break;
     case 'secondary':
-      selectedStyles.push(buttonStyles, tw`bg-gray-500`);
+      selectedStyles.push(buttonStyles, tw`bg-white`);
       break;
     case 'outline':
       selectedStyles.push(buttonStyles, tw`border border-blue-500 bg-white`);
@@ -55,7 +55,11 @@ export const Button = ({
       {...props}
       disabled={variant === 'disabled'}
     >
-      <Text style={tw`font-bold text-lg text-center text-white`}>
+      <Text
+        style={tw`font-bold text-lg text-center ${
+          variant === 'secondary' ? 'text-emerald-400' : 'text-white'
+        }`}
+      >
         {children}
       </Text>
     </TouchableOpacity>

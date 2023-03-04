@@ -1,45 +1,63 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
+import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import tw from '../../../lib/tailwind';
+import globalstyle from '../../../styles/globalstyle';
 
-const ResetPasswordScreen = () => {
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmNewPassword, setConfirmNewPassword] = useState('');
+const ForgotPassword = () => {
+  const [email, setEmail] = useState('');
 
-  const handleResetPassword = () => {
-    // handle reset password logic here
+  const navigate = useNavigation();
+
+  const handleForgotPassword = () => {
+    // handle forgot password logic here
   };
 
   return (
-    <View style={tw`flex-1 justify-center items-center bg-white`}>
-      <View style={tw`w-4/5`}>
-        <Text style={tw`text-3xl font-bold mb-4 text-gray-800`}>
-          Reset Password
-        </Text>
-        <TextInput
-          style={tw`bg-gray-100 border-2 border-gray-300 p-2 mb-4`}
-          placeholder="New Password"
-          secureTextEntry={true}
-          onChangeText={(text) => setNewPassword(text)}
-          value={newPassword}
-        />
-        <TextInput
-          style={tw`bg-gray-100 border-2 border-gray-300 p-2 mb-4`}
-          placeholder="Confirm New Password"
-          secureTextEntry={true}
-          onChangeText={(text) => setConfirmNewPassword(text)}
-          value={confirmNewPassword}
-        />
-        <TouchableOpacity
-          style={tw`bg-blue-500 py-2 px-4 rounded`}
-          onPress={handleResetPassword}
-        >
-          <Text style={tw`text-white text-lg font-bold`}>Reset Password</Text>
-        </TouchableOpacity>
+    <SafeAreaView style={globalstyle.droidSafeArea}>
+      <View style={tw`flex-1 items-center bg-white`}>
+        <View style={tw`bg-white text-xl self-start ml-4 mt-8`}>
+          <Button onPress={() => navigate.goBack()}>Back</Button>
+        </View>
+        {/* header */}
+        <View style={tw`w-4/5 mt-8`}>
+          <View style={tw`flex flex-col gap-2 mb-8`}>
+            <Text
+              style={tw`text-4xl break-words w-4/5 font-bold text-gray-800`}
+            >
+              Reset Password
+            </Text>
+            <Text style={tw`text-lg mb-4 text-gray-800`}>
+              Enter your email address to reset your password.
+            </Text>
+          </View>
+          <View style={tw`flex flex-col gap-4`}>
+            <Input
+              placeholder="New password"
+              onChangeText={(text) => setEmail(text)}
+              value={email}
+            />
+            <Input
+              placeholder="Confirm new password"
+              onChangeText={(text) => setEmail(text)}
+              value={email}
+            />
+          </View>
+          <View style={tw`mt-8`}>
+            <Button onPress={handleForgotPassword}>Send Email</Button>
+          </View>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
-export default ResetPasswordScreen;
+export default ForgotPassword;
