@@ -2,12 +2,13 @@ import React from "react";
 import { FlatList, Image, Text } from "react-native";
 import AppBox from "../../../components/AppBox";
 import tw from "../../../lib/tailwind";
+import RecyclingBinIcon from "../../../assets/icons/recycle-bin-svgrepo-com.svg";
 
 type Props = {};
 
 const Details = () => {
   const renderItem = () => {
-    return <Text style={tw`text-4 ml-4`}>{`\u2022 Lorem Ipsum`}</Text>;
+    return <Text style={tw`text-4 ml-2`}>{`\u2022 Lorem Ipsum`}</Text>;
   };
 
   return (
@@ -20,14 +21,15 @@ const Details = () => {
         }}
       />
       <Text style={tw`text-grey-100 font-bold text-12 my-2`}>It's A Steak</Text>
+      <RecyclingBinIcon fill="black" style={tw`w-10 h-10`} />
       <Text style={tw`text-4 my-2`}>Food Waste</Text>
       <Text style={tw`text-4 mb-8`}>6x46m3</Text>
 
       <Text style={tw`text-5 font-bold mb-1`}>
         Here's how you could recycle it
       </Text>
-          <FlatList
-              style={tw`max-h-20`}
+      <FlatList
+        style={tw`max-h-20`}
         scrollEnabled={false}
         data={["Lorem Ipsum", "Lorem Ipsum", "Lorem Ipsum"]}
         renderItem={renderItem}
