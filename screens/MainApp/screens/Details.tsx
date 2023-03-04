@@ -1,8 +1,9 @@
 import React from "react";
-import { FlatList, Image, Text } from "react-native";
+import { FlatList, Image, Text, View } from "react-native";
 import AppBox from "../../../components/AppBox";
 import tw from "../../../lib/tailwind";
 import RecyclingBinIcon from "../../../assets/icons/recycle-bin-svgrepo-com.svg";
+import CO2Icon from "../../../assets/icons/carbon-dioxide-concentration-svgrepo-com.svg";
 
 type Props = {};
 
@@ -21,9 +22,16 @@ const Details = () => {
         }}
       />
       <Text style={tw`text-grey-100 font-bold text-12 my-2`}>It's A Steak</Text>
-      <RecyclingBinIcon fill="black" style={tw`w-10 h-10`} />
-      <Text style={tw`text-4 my-2`}>Food Waste</Text>
-      <Text style={tw`text-4 mb-8`}>6x46m3</Text>
+
+      <View style={tw`flex-row items-center mb-2`}>
+        <RecyclingBinIcon width={20} height={20} />
+        <Text style={tw`text-4 my-2 ml-2`}>Food Waste</Text>
+      </View>
+
+      <View style={tw`flex-row items-center mb-2`}>
+        <CO2Icon width={20} height={20} />
+        <Text style={tw`text-4 my-2 ml-2`}>6x6x4m3</Text>
+      </View>
 
       <Text style={tw`text-5 font-bold mb-1`}>
         Here's how you could recycle it
