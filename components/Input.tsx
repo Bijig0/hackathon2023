@@ -34,8 +34,8 @@ const Input = ({
         {leadingIcon && <View style={tw`absolute left-2`}>{leadingIcon}</View>}
         <TextInput
           style={tw`bg-gray-100 border-2 rounded-md border-gray-300 py-2 px-3 pl-${
-            leadingIcon ? 10 : 2
-          } pr-${trailingIcon ? 10 : 2}`}
+            leadingIcon ? 10 : 3.5
+          } pr-${trailingIcon ? 10 : 3.5}`}
           onChangeText={onChangeText}
           value={value}
           secureTextEntry={secureTextEntry}
