@@ -17,7 +17,6 @@ import Footer from "./Footer";
 // SplashScreen.preventAutoHideAsync()
 
 export default function MainApp() {
-  console.log("main app");
   const Tab = createBottomTabNavigator();
 
   // const mainAppIsReady = useMainAppIsReady(data[0].data[0]);

@@ -1,6 +1,7 @@
 import { Camera, CameraType } from "expo-camera";
 import { useState } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import tw from "../../../lib/tailwind";
 
 export default function App() {
   const [type, setType] = useState(CameraType.back);
@@ -32,10 +33,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Camera style={styles.camera} type={type}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
+        <View>
+          <Text style={tw`text-white text-center mb-4`}>Scan the photo</Text>
+          <View
+            style={tw`w-40 h-40 border-2 border-solid border-green-500`}
+          ></View>
         </View>
       </Camera>
     </View>
@@ -49,6 +51,9 @@ const styles = StyleSheet.create({
   },
   camera: {
     flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   buttonContainer: {
     flex: 1,
