@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import { View, Text } from "react-native";
+import tw from "../../../lib/tailwind";
 
-type Props = {}
+type Props = {};
 
 const Home = () => {
-    
-}
+  return <View style={tw`bg-red w-10 h-10`}></View>;
+};
 
-export default Home
+export default Home;
