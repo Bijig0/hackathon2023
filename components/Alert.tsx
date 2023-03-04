@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, ViewProps } from 'react-native';
+import {
+  View,
+  Text,
+  ViewProps,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+} from 'react-native';
 import tw from 'twrnc';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -43,9 +50,13 @@ export const Alert = ({
   }
 
   return (
-    <View style={tw`flex justify-center items-center`}>
+    <SafeAreaView
+      style={tw`flex flex-1 w-full ${
+        Platform.OS === 'android' ? `pt-[${StatusBar.currentHeight}px]` : 'p-0'
+      }`}
+    >
       <View
-        style={tw`${color} absolute top-0 p-4 rounded-md border-l-4`}
+        style={tw`${color} flex flex-row p-4 rounded-md border-l-4`}
         {...props}
       >
         <Ionicons
@@ -53,8 +64,8 @@ export const Alert = ({
           size={24}
           style={tw`mr-2 ${textColor}`}
         />
-        <Text style={tw`text-base font-normal text-gray-800`}>{message}</Text>
+        <Text style={tw`text-base font-normal ${textColor}`}>{message}</Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
