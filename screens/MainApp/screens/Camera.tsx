@@ -12,10 +12,12 @@ import AppBox from "../../../components/AppBox";
 import CameraButton from "../../../components/CameraButton";
 import Choice from "../../../components/Choice";
 import tw from "../../../lib/tailwind";
+import { useNavigation } from "@react-navigation/native";
 
 export default function App() {
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
+  const navigation = useNavigation();
 
   if (!permission) {
     // Camera permissions are still loading
@@ -34,11 +36,9 @@ export default function App() {
     );
   }
 
-  function toggleCameraType() {
-    setType((current) =>
-      current === CameraType.back ? CameraType.front : CameraType.back
-    );
-  }
+  const onBackPress = () => {
+    navigation.goBack();
+  };
 
   const data = ["Foods and drinks", "Alcohol", "Plants and beverages"];
 
@@ -50,6 +50,9 @@ export default function App() {
     <Camera style={tw`flex-1`} type={type}>
       <View style={tw`flex-1 justify-center items-center px-5 pt-24`}>
         <View style={tw`flex-0 basis-15`}>
+          <TouchableOpacity onPress={onBackPress}>
+            <Text>Go Back</Text>
+          </TouchableOpacity>
           <Text style={tw`text-white text-center text-8`}>
             Capture Your Waste
           </Text>

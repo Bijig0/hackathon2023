@@ -12,7 +12,7 @@ import * as SplashScreen from "expo-splash-screen";
 import CameraScreen from "./screens/Camera";
 import Home from "./screens/Home";
 import Profile from "./screens/Profile";
-import Footer from "./Footer";
+import Details from "./screens/Details";
 
 // SplashScreen.preventAutoHideAsync()
 
@@ -43,6 +43,7 @@ export default function MainApp() {
       initialRouteName="Home"
     >
       <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Details" component={Details} />
       <Tab.Screen
         name="CameraScreen"
         component={CameraScreen}
