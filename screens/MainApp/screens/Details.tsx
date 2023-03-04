@@ -1,11 +1,31 @@
 import React from "react";
-import { FlatList, Image, Text, View } from "react-native";
+import { FlatList, Image, Share, Text, View } from "react-native";
 import AppBox from "../../../components/AppBox";
 import tw from "../../../lib/tailwind";
 import RecyclingBinIcon from "../../../assets/icons/recycle-bin-svgrepo-com.svg";
 import CO2Icon from "../../../assets/icons/carbon-dioxide-concentration-svgrepo-com.svg";
+import LoveIcon from "../../../assets/icons/love-svgrepo-com.svg";
+import CapitalizeIcon from "../../../assets/icons/letter-case-capitalize-svgrepo-com.svg";
+import ShareIcon from "../../../assets/icons/share-2-svgrepo-com.svg";
+import CancelIcon from "../../../assets/icons/cancel-svgrepo-com.svg";
 
 type Props = {};
+
+const IconBar = () => {
+  const iconSize = 30;
+  return (
+    <View style={tw`flex-row justify-between mb-4`}>
+      <View style={tw``}>
+        <CancelIcon width={iconSize} height={iconSize} />
+      </View>
+      <View style={tw`flex-row`}>
+        <LoveIcon style={tw`ml-3`} width={iconSize} height={iconSize} />
+        <CapitalizeIcon style={tw`ml-3`} width={iconSize} height={iconSize} />
+        <ShareIcon style={tw`ml-3`} width={iconSize} height={iconSize} />
+      </View>
+    </View>
+  );
+};
 
 const Details = () => {
   const renderItem = () => {
@@ -14,6 +34,7 @@ const Details = () => {
 
   return (
     <AppBox>
+      <IconBar />
       <Image
         //   Make it content fit
         style={tw`h-60 w-full rounded-xl`}
