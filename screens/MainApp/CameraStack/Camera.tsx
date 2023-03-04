@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
 } from "react-native";
 import AppBox from "../../../components/AppBox";
 import CameraButton from "../../../components/CameraButton";
@@ -17,6 +18,9 @@ import CaptureSquare from "../../../assets/icons/capture-square.svg";
 import TickIcon from "../../../assets/icons/tick-svgrepo-com.svg";
 import BackIcon from "../../../assets/icons/back-svgrepo-com (2).svg";
 import CaptureRectangle from "../../../assets/icons/capture-rectangle.svg";
+import { BlurView } from "expo-blur";
+import { useWindowDimensions } from "react-native";
+
 
 export default function App() {
   const [type, setType] = useState(CameraType.back);
@@ -42,14 +46,35 @@ export default function App() {
 
   const data = ["Foods and drinks", "Alcohol", "Plants and beverages"];
 
+  const screenWidth = Dimensions.get('window').width;
+
+  console.log({ screenWidth });
+  const screenHeight = Dimensions.get("window").height;
+
+  const captureRectangleWidth = 500;
+
+  // const blurWidth = (screenWidth - captureRectangleWidth) / 2;
+
+  const blurWidth = 75
+
+  // @ts-ignore
   const renderItem = ({ item: text }) => {
     return <Choice text={text} />;
   };
 
+  console.log({ blurWidth });
+
   return (
     <Camera style={tw`flex-1`} type={type}>
+      <BlurView intensity={25} style={tw`absolute left-0 w-21 h-900`} />
+
+      <BlurView intensity={25} style={tw`absolute right-0 w-21 h-900`} />
+      <BlurView intensity={25} style={tw`absolute top-0 left-21 right-21 h-29`} />
+      <BlurView intensity={25} style={tw`absolute bottom-0 left-21 right-21 h-62`} />
+
+
       <View style={tw`flex-1 justify-center items-center pt-16`}>
-        <CaptureRectangle width={500} height={575} />
+        <CaptureRectangle width={captureRectangleWidth} height={575} />
         <View
           style={tw`bg-black items-center flex-2 relative right-5 w-1000000`}
         >
