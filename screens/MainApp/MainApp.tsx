@@ -49,6 +49,7 @@ export default function MainApp() {
         navigationKey="CameraScreen"
         options={{
           lazy: false,
+          tabBarStyle: { display: "none" },
         }}
       />
       <Tab.Screen name="Profile" component={Profile} />

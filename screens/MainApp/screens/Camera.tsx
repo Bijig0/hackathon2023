@@ -1,6 +1,7 @@
 import { Camera, CameraType } from "expo-camera";
 import { useState } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import AppBox from "../../../components/AppBox";
 import tw from "../../../lib/tailwind";
 
 export default function App() {
@@ -31,44 +32,21 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
-        <View>
-          <Text style={tw`text-white text-center mb-4`}>Scan the photo</Text>
-          <View
-            style={tw`w-40 h-40 border-2 border-solid border-green-500`}
-          ></View>
-        </View>
-      </Camera>
-    </View>
+    <Camera style={tw`flex-1`} type={type}>
+      <View style={tw`w-full px-5 pt-24`}>
+        <Text style={tw`text-white text-center mb-4 text-8`}>
+          Capture Your Waste
+        </Text>
+        <View
+          style={tw`w-full h-120 border-2 border-solid border-green-500`}
+        ></View>
+      </View>
+    </Camera>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
   camera: {
     flex: 1,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: "row",
-    backgroundColor: "transparent",
-    margin: 64,
-  },
-  button: {
-    flex: 1,
-    alignSelf: "flex-end",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "white",
   },
 });
