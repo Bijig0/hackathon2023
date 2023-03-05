@@ -17,6 +17,7 @@ import CameraStack from "./CameraStack/CameraStack";
 import HomeIcon from "../../assets/icons/home-svgrepo-com (1).svg";
 import UserIcon from "../../assets/icons/user-svgrepo-com (1).svg";
 import CameraIcon from "../../assets/icons/camera-svgrepo-com.svg";
+// import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
 // SplashScreen.preventAutoHideAsync()
 
