@@ -6,6 +6,7 @@ import SignUp from "./screens/SignUp";
 import ForgotPassword from "./screens/ForgotPassword";
 import ResetPassword from "./screens/ResetPassword";
 import { Welcome } from "./screens/Welcome";
+import Details from "../MainApp/screens/Details";
 
 type Props = {};
 

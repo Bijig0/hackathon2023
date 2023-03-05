@@ -51,7 +51,6 @@ const LoginScreen = () => {
               leadingIcon={
                 <EnvelopeIcon style={tw`flex w-6 h-6 text-gray-300`} />
               }
-              error="Error message"
               placeholder="Email"
               onChangeText={(text) => setEmail(text)}
               value={email}
@@ -64,7 +63,6 @@ const LoginScreen = () => {
               // leadingIcon={
               //   <LockOpenIcon style={tw`w-6 h-6 text-black bg-red-400`} />
               // }
-              error="Error message"
               placeholder="Password"
               onChangeText={(text) => setPassword(text)}
               value={password}

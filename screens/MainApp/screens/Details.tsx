@@ -13,8 +13,8 @@ import IconBar from "../../../components/IconBar";
 type Props = {};
 
 const Details = () => {
-  const renderItem = () => {
-    return <Text style={tw`text-4 ml-2`}>{`\u2022 Lorem Ipsum`}</Text>;
+  const renderItem = ({item: text}) => {
+    return <Text style={tw`text-4 ml-2 mb-1`}>{`\u2022 ${text}`}</Text>;
   };
 
   return (
@@ -24,19 +24,21 @@ const Details = () => {
         //   Make it content fit
         style={tw`h-60 w-full rounded-xl`}
         source={{
-          uri: "https://www.seriouseats.com/thmb/-KA2hwMofR2okTRndfsKtapFG4Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2015__05__Anova-Steak-Guide-Sous-Vide-Photos15-beauty-159b7038c56a4e7685b57f478ca3e4c8.jpg",
+          uri: "https://i.pinimg.com/originals/70/77/26/707726398081c5ffbc5c9cd02076ae46.jpg",
         }}
       />
-      <Text style={tw`text-grey-100 font-bold text-12 my-2`}>It's A Steak</Text>
+      <Text style={tw`text-grey-100 font-bold text-12 my-2`}>
+        It's A Paper Cup
+      </Text>
 
       <View style={tw`flex-row items-center`}>
         <RecyclingBinIcon width={20} height={20} />
-        <Text style={tw`text-4 my-2 ml-2`}>Food Waste</Text>
+        <Text style={tw`text-4 my-2 ml-2`}>Recyclable Waste</Text>
       </View>
 
       <View style={tw`flex-row items-center mb-2`}>
         <CO2Icon width={20} height={20} />
-        <Text style={tw`text-4 my-2 ml-2`}>6x6x4m3</Text>
+        <Text style={tw`text-4 my-2 ml-2`}>Carbon footprint value: 1.3 kg</Text>
       </View>
 
       <Text style={tw`text-5 font-bold mt-4 mb-1`}>
@@ -45,16 +47,24 @@ const Details = () => {
       <FlatList
         style={tw`max-h-20`}
         scrollEnabled={false}
-        data={["Lorem Ipsum", "Lorem Ipsum", "Lorem Ipsum"]}
+        data={[
+          "Remove the paper sleeve for coffee cup",
+          "Throw the straw away",
+          "Compost the paper as fertilizer",
+        ]}
         renderItem={renderItem}
       />
 
-      <Text style={tw`text-5 font-bold mb-1`}>
-        Here's how you could reduce carbon emissions
+      <Text style={tw`text-5 font-bold mb-1 mt-8`}>
+        Here's how you could reduce carbon emissions:
       </Text>
       <FlatList
         scrollEnabled={false}
-        data={["Lorem Ipsum", "Lorem Ipsum", "Lorem Ipsum"]}
+        data={[
+          "Use carbon offsets to reduce your footprint value",
+          "Understand how your actions affect nature",
+          "Plant a tree a day",
+        ]}
         renderItem={renderItem}
       />
     </AppBox>

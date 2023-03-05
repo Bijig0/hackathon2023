@@ -73,7 +73,7 @@ const SignUp = () => {
           </View>
           {/* button */}
           <View style={tw`mt-12`}>
-            <Button onPress={() => navigation.navigate("")}>Sign up</Button>
+            <Button>Sign up</Button>
           </View>
           {/* divider */}
           <View style={tw`flex flex-row w-full items-center my-8`}>

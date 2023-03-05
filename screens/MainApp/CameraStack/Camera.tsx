@@ -1,5 +1,5 @@
 import { Camera, CameraType } from "expo-camera";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Button,
   FlatList,
@@ -21,21 +21,39 @@ import BackIcon from "../../../assets/icons/back-svgrepo-com (2).svg";
 import CaptureRectangle from "../../../assets/icons/capture-rectangle.svg";
 import { BlurView } from "expo-blur";
 import { useWindowDimensions } from "react-native";
+import LoadingScreen from "../LoadingScreen";
 
 type FlatListState = "left" | "center" | "right";
 
-const categories = [
-  "Foods",
-  "Electronics",
-  "Green Waste",
-] as const;
+const categories = ["Foods", "Electronics", "Green Waste"] as const;
 
 type Category = typeof categories[number];
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigation = useNavigation();
+
+  console.log("hello");
+  useEffect(() => {
+    console.log("testing");
+    const timeout = setTimeout(() => {
+      setIsLoading(!isLoading);
+      setTimeout(() => {
+        navigation.navigate("Details");
+        setIsLoading(!isLoading);
+      }, 750);
+    }, 2000);
+
+    console.log("im being ran");
+
+    // return clearTimeout(timeout);
+  }, []);
+
   const [type, setType] = useState(CameraType.back);
   const flatListRef = useRef(null);
-  const [selectedCategory, setSelectedCategory] = useState<Category>("Electronics");
+  const [selectedCategory, setSelectedCategory] =
+    useState<Category>("Electronics");
   const [permission, requestPermission] = Camera.useCameraPermissions();
   let flatListState: FlatListState = "center";
 
@@ -46,8 +64,6 @@ export default function App() {
   } else if (selectedCategory === "Green Waste") {
     flatListState = "right";
   }
-
-  const navigation = useNavigation();
 
   const scrollToIndex = (index: number) => {
     // @ts-ignore
@@ -73,7 +89,6 @@ export default function App() {
 
   const screenWidth = Dimensions.get("window").width;
 
-  console.log({ screenWidth });
   const screenHeight = Dimensions.get("window").height;
 
   const captureRectangleWidth = 500;
@@ -91,7 +106,6 @@ export default function App() {
   // @ts-ignore
   const renderItem = ({ item: category }) => {
     const isSelected = category === selectedCategory;
-    console.log({ category, isSelected });
 
     return (
       <Choice
@@ -102,50 +116,50 @@ export default function App() {
     );
   };
 
-  console.log({ blurWidth });
-
   return (
-    <Camera style={tw`flex-1`} type={type}>
-      <BlurView intensity={25} style={tw`absolute left-0 w-21 h-900`} />
+    <LoadingScreen show={!isLoading}>
+      <Camera style={tw`flex-1`} type={type}>
+        <BlurView intensity={25} style={tw`absolute left-0 w-21 h-900`} />
 
-      <BlurView intensity={25} style={tw`absolute right-0 w-21 h-900`} />
-      <BlurView
-        intensity={25}
-        style={tw`absolute top-0 left-21 right-21 h-29`}
-      />
-      <BlurView
-        intensity={25}
-        style={tw`absolute bottom-0 left-21 right-21 h-62`}
-      />
+        <BlurView intensity={25} style={tw`absolute right-0 w-21 h-900`} />
+        <BlurView
+          intensity={25}
+          style={tw`absolute top-0 left-21 right-21 h-29`}
+        />
+        <BlurView
+          intensity={25}
+          style={tw`absolute bottom-0 left-21 right-21 h-62`}
+        />
 
-      <View style={tw`flex-1 justify-center items-center pt-16`}>
-        <CaptureRectangle width={captureRectangleWidth} height={575} />
-        <View
-          style={tw`bg-black items-center flex-2 relative right-5 w-1000000`}
-        >
-          <View style={tw`flex-1 mb-4`}>
-            <FlatList
-              data={categories}
-              style={tw`relative ${
-                flatListState === "left" ? "left-33" : "right-26"
-              } ${
-                flatListState === "center" ? "left-7" : ""
-              } w-full mt-4 overflow-visible`}
-              horizontal
-              renderItem={renderItem}
-              ref={flatListRef}
-              initialScrollIndex={0}
-              keyExtractor={(item) => {
-                return item;
-              }}
-            />
-          </View>
+        <View style={tw`flex-1 justify-center items-center pt-16`}>
+          <CaptureRectangle width={captureRectangleWidth} height={575} />
+          <View
+            style={tw`bg-black items-center flex-2 relative right-5 w-1000000`}
+          >
+            <View style={tw`flex-1 mb-4`}>
+              <FlatList
+                data={categories}
+                style={tw`relative ${
+                  flatListState === "left" ? "left-33" : "right-26"
+                } ${
+                  flatListState === "center" ? "left-7" : ""
+                } w-full mt-4 overflow-visible`}
+                horizontal
+                renderItem={renderItem}
+                ref={flatListRef}
+                initialScrollIndex={0}
+                keyExtractor={(item) => {
+                  return item;
+                }}
+              />
+            </View>
 
-          <View style={tw`flex-3`}>
-            <CameraButton />
+            <View style={tw`flex-3`}>
+              <CameraButton />
+            </View>
           </View>
         </View>
-      </View>
-    </Camera>
+      </Camera>
+    </LoadingScreen>
   );
 }

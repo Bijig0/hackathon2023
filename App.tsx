@@ -9,6 +9,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import MainApp from "./screens/MainApp/MainApp";
 import Auth from "./screens/Auth/Auth";
+import Details from "./screens/MainApp/screens/Details";
 
 export default function App() {
   const Stack = createNativeStackNavigator<AppParamList>();
@@ -51,6 +52,7 @@ export default function App() {
         >
           <Stack.Screen component={Auth} name="Auth" />
           <Stack.Screen component={MainApp} name="MainApp" />
+          <Stack.Screen component={Details} name="Details" />
         </Stack.Navigator>
       </NavigationContainer>
       {/* </AppProvider> */}

@@ -22,6 +22,7 @@ declare global {
     // MainApp: NavigatorScreenParams<MainAppParamList>;
     Auth: NavigatorScreenParams<AuthStackParamList>;
     MainApp: NavigatorScreenParams<MainAppParamList>;
+    Details: undefined;
   };
   type AppParamList = TRootParamList;
 }
