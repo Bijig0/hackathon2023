@@ -13,6 +13,7 @@ import tw from '../../../lib/tailwind';
 import globalstyle from '../../../styles/globalstyle';
 import Svg, { Circle } from 'react-native-svg';
 import {
+  ArrowLeftIcon,
   EnvelopeIcon,
   LockClosedIcon,
   LockOpenIcon,
@@ -36,7 +37,9 @@ const LoginScreen = () => {
     <SafeAreaView style={globalstyle.droidSafeArea}>
       <View style={tw`bg-white flex-1 items-center`}>
         <View style={tw`bg-white text-xl self-start ml-4 mt-8`}>
-          <Button onPress={() => navigate.goBack()}>Back</Button>
+          <Button variant="secondary" onPress={() => navigate.goBack()}>
+            <ArrowLeftIcon style={tw`h-6 w-6 text-black`} />
+          </Button>
         </View>
         <View style={tw`w-4/5 mt-8`}>
           {/* header */}

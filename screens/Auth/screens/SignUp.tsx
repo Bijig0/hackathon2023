@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import {
+  ArrowLeftIcon,
   EnvelopeIcon,
   LockClosedIcon,
   UserIcon,
@@ -28,8 +29,10 @@ const SignUp = () => {
   return (
     <SafeAreaView style={globalstyle.droidSafeArea}>
       <View style={tw`flex-1 items-center bg-white`}>
-        <View style={tw`bg-white text-xl self-start ml-4 mt-8`}>
-          <Button onPress={() => navigate.goBack()}>Back</Button>
+        <View style={tw`text-xl self-start ml-4 mt-8`}>
+          <Button variant="secondary" onPress={() => navigate.goBack()}>
+            <ArrowLeftIcon style={tw`h-6 w-6 text-black`} />
+          </Button>
         </View>
         <View style={tw`w-4/5 mt-8`}>
           {/* header */}
