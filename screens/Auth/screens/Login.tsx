@@ -12,7 +12,7 @@ import Input from "../../../components/Input";
 import tw from "../../../lib/tailwind";
 import globalstyle from "../../../styles/globalstyle";
 import Svg, { Circle } from "react-native-svg";
-import { LockOpenIcon } from "react-native-heroicons/outline";
+import { ArrowLeftIcon, EnvelopeIcon, LockOpenIcon } from "react-native-heroicons/outline";
 import OAuthBar from "../../../components/OAuthBar";
 
 const LoginScreen = () => {
