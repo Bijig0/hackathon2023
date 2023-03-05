@@ -11,21 +11,20 @@ type Props = {};
 
 const Auth = (props: Props) => {
   const Stack = createNativeStackNavigator();
-  const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator
-      initialRouteName="SignUp"
+    <Stack.Navigator
+      initialRouteName="Welcome"
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Tab.Screen name="Welcome" component={Welcome} />
-      <Tab.Screen name="Login" component={Login} />
-      <Tab.Screen name="SignUp" component={SignUp} />
-      <Tab.Screen name="ResetPassword" component={ResetPassword} />
-      <Tab.Screen name="ForgotPassword" component={ForgotPassword} />
-    </Tab.Navigator>
+      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+    </Stack.Navigator>
   );
 };
 

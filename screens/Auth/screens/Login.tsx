@@ -27,6 +27,7 @@ const LoginScreen = () => {
   const handleLogin = () => {
     // handle login logic here
     setIsTouch(true);
+    navigate.navigate("MainApp", { screen: "Home" });
   };
 
   return (

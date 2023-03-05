@@ -47,7 +47,7 @@ export default function App() {
           screenOptions={{
             headerShown: false,
           }}
-          initialRouteName="MainApp"
+          initialRouteName="Auth"
         >
           <Stack.Screen component={Auth} name="Auth" />
           <Stack.Screen component={MainApp} name="MainApp" />

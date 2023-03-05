@@ -7,7 +7,7 @@ import {
   EnvelopeIcon,
   LockClosedIcon,
   UserIcon,
-} from 'react-native-heroicons/outline';
+} from "react-native-heroicons/outline";
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import tw from "../../../lib/tailwind";
@@ -18,6 +18,8 @@ import AppleIcon from "../../../assets/logos/Apple.png";
 import OAuthBar from "../../../components/OAuthBar";
 
 const SignUp = () => {
+  const navigation = useNavigation();
+
   const [name, setName] = useState("");
 
   const [email, setEmail] = useState("");
@@ -71,7 +73,7 @@ const SignUp = () => {
           </View>
           {/* button */}
           <View style={tw`mt-12`}>
-            <Button>Sign up</Button>
+            <Button onPress={() => navigation.navigate("")}>Sign up</Button>
           </View>
           {/* divider */}
           <View style={tw`flex flex-row w-full items-center my-8`}>
