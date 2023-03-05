@@ -1,5 +1,5 @@
-import { Camera, CameraType } from "expo-camera";
-import { useState, useRef } from "react";
+import { Camera, CameraType } from 'expo-camera';
+import { useState, useRef } from 'react';
 import {
   Button,
   FlatList,
@@ -9,31 +9,31 @@ import {
   View,
   Dimensions,
   ScrollView,
-} from "react-native";
-import AppBox from "../../../components/AppBox";
-import CameraButton from "../../../components/CameraButton";
-import Choice from "../../../components/Choice";
-import tw from "../../../lib/tailwind";
-import { useNavigation } from "@react-navigation/native";
-import CaptureSquare from "../../../assets/icons/capture-square.svg";
-import TickIcon from "../../../assets/icons/tick-svgrepo-com.svg";
-import BackIcon from "../../../assets/icons/back-svgrepo-com (2).svg";
-import CaptureRectangle from "../../../assets/icons/capture-rectangle.svg";
-import { BlurView } from "expo-blur";
-import { useWindowDimensions } from "react-native";
+} from 'react-native';
+import AppBox from '../../../components/AppBox';
+import CameraButton from '../../../components/CameraButton';
+import Choice from '../../../components/Choice';
+import tw from '../../../lib/tailwind';
+import { useNavigation } from '@react-navigation/native';
+import CaptureSquare from '../../../assets/icons/capture-square.svg';
+import TickIcon from '../../../assets/icons/tick-svgrepo-com.svg';
+import BackIcon from '../../../assets/icons/back-svgrepo-com (2).svg';
+import CaptureRectangle from '../../../assets/icons/capture-rectangle.svg';
+import { BlurView } from 'expo-blur';
+import { useWindowDimensions } from 'react-native';
 
 const categories = [
-  "Foods and drinks",
-  "Alcohol",
-  "Plants and beverages",
+  'Foods and drinks',
+  'Alcohol',
+  'Plants and beverages',
 ] as const;
 
 type Category = typeof categories[number];
 
 export default function App() {
   const [type, setType] = useState(CameraType.back);
-  const flatListRef = useRef(null)
-  const [selectedCategory, setSelectedCategory] = useState<Category>("Alcohol");
+  const flatListRef = useRef(null);
+  const [selectedCategory, setSelectedCategory] = useState<Category>('Alcohol');
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const navigation = useNavigation();
 
@@ -46,7 +46,7 @@ export default function App() {
     // Camera permissions are not granted yet
     return (
       <View>
-        <Text style={{ textAlign: "center" }}>
+        <Text style={{ textAlign: 'center' }}>
           We need your permission to show the camera
         </Text>
         <Button onPress={requestPermission} title="grant permission" />
@@ -54,10 +54,10 @@ export default function App() {
     );
   }
 
-  const screenWidth = Dimensions.get("window").width;
+  const screenWidth = Dimensions.get('window').width;
 
   console.log({ screenWidth });
-  const screenHeight = Dimensions.get("window").height;
+  const screenHeight = Dimensions.get('window').height;
 
   const captureRectangleWidth = 500;
 
@@ -104,14 +104,20 @@ export default function App() {
         <View
           style={tw`bg-black items-center flex-2 relative right-5 w-1000000`}
         >
-          <View style={tw`flex-1 mb-4`}>
-            <FlatList
-              data={categories}
-              style={tw`relative left-4 mt-4`}
-              horizontal
-              renderItem={renderItem}
-              ref={flatListRef}
-            />
+          <View
+            style={tw`flex-1 relative mb-4 ${
+              selectedCategory === 'Foods and drinks' ? 'left-35' : ''
+            } ${selectedCategory === 'Plants and beverages' ? 'right-35' : ''}`}
+          >
+            <View>
+              <FlatList
+                data={categories}
+                style={tw`relative left-4 mt-4`}
+                horizontal
+                renderItem={renderItem}
+                ref={flatListRef}
+              />
+            </View>
           </View>
 
           <View style={tw`flex-3`}>

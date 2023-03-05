@@ -7,7 +7,11 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import { EnvelopeIcon, LockOpenIcon } from 'react-native-heroicons/outline';
+import {
+  ArrowLeftIcon,
+  EnvelopeIcon,
+  LockOpenIcon,
+} from 'react-native-heroicons/outline';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import tw from '../../../lib/tailwind';
@@ -25,15 +29,15 @@ const ForgotPassword = () => {
   return (
     <SafeAreaView style={globalstyle.droidSafeArea}>
       <View style={tw`flex-1 items-center bg-white`}>
-        <View style={tw`bg-white text-xl self-start ml-4 mt-8`}>
-          <Button onPress={() => navigate.goBack()}>Back</Button>
+        <View style={tw`text-xl self-start ml-4 mt-8`}>
+          <Button variant="secondary" onPress={() => navigate.goBack()}>
+            <ArrowLeftIcon style={tw`h-6 w-6 text-black`} />
+          </Button>
         </View>
         {/* header */}
         <View style={tw`w-4/5 mt-8`}>
           <View style={tw`flex flex-col gap-2 mb-8`}>
-            <Text
-              style={tw`text-4xl break-words w-4/5 font-bold text-gray-800`}
-            >
+            <Text style={tw`text-4xl w-4/5 font-bold text-gray-800`}>
               Forgot Password?
             </Text>
             <Text style={tw`text-lg mb-4 text-gray-800`}>
