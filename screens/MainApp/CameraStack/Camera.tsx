@@ -1,5 +1,5 @@
 import { Camera, CameraType } from "expo-camera";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Button,
   FlatList,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import AppBox from "../../../components/AppBox";
 import CameraButton from "../../../components/CameraButton";
@@ -21,9 +22,18 @@ import CaptureRectangle from "../../../assets/icons/capture-rectangle.svg";
 import { BlurView } from "expo-blur";
 import { useWindowDimensions } from "react-native";
 
+const categories = [
+  "Foods and drinks",
+  "Alcohol",
+  "Plants and beverages",
+] as const;
+
+type Category = typeof categories[number];
 
 export default function App() {
   const [type, setType] = useState(CameraType.back);
+  const flatListRef = useRef(null)
+  const [selectedCategory, setSelectedCategory] = useState<Category>("Alcohol");
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const navigation = useNavigation();
 
@@ -44,9 +54,7 @@ export default function App() {
     );
   }
 
-  const data = ["Foods and drinks", "Alcohol", "Plants and beverages"];
-
-  const screenWidth = Dimensions.get('window').width;
+  const screenWidth = Dimensions.get("window").width;
 
   console.log({ screenWidth });
   const screenHeight = Dimensions.get("window").height;
@@ -55,11 +63,24 @@ export default function App() {
 
   // const blurWidth = (screenWidth - captureRectangleWidth) / 2;
 
-  const blurWidth = 75
+  const blurWidth = 75;
+
+  const onSelectCategory = (category: Category) => {
+    setSelectedCategory(category);
+  };
 
   // @ts-ignore
-  const renderItem = ({ item: text }) => {
-    return <Choice text={text} />;
+  const renderItem = ({ item: category }) => {
+    const isSelected = category === selectedCategory;
+    console.log({ category, isSelected });
+
+    return (
+      <Choice
+        onPress={() => onSelectCategory(category)}
+        text={category}
+        isSelected={isSelected}
+      />
+    );
   };
 
   console.log({ blurWidth });
@@ -69,9 +90,14 @@ export default function App() {
       <BlurView intensity={25} style={tw`absolute left-0 w-21 h-900`} />
 
       <BlurView intensity={25} style={tw`absolute right-0 w-21 h-900`} />
-      <BlurView intensity={25} style={tw`absolute top-0 left-21 right-21 h-29`} />
-      <BlurView intensity={25} style={tw`absolute bottom-0 left-21 right-21 h-62`} />
-
+      <BlurView
+        intensity={25}
+        style={tw`absolute top-0 left-21 right-21 h-29`}
+      />
+      <BlurView
+        intensity={25}
+        style={tw`absolute bottom-0 left-21 right-21 h-62`}
+      />
 
       <View style={tw`flex-1 justify-center items-center pt-16`}>
         <CaptureRectangle width={captureRectangleWidth} height={575} />
@@ -80,10 +106,11 @@ export default function App() {
         >
           <View style={tw`flex-1 mb-4`}>
             <FlatList
-              data={data}
+              data={categories}
               style={tw`relative left-4 mt-4`}
               horizontal
               renderItem={renderItem}
+              ref={flatListRef}
             />
           </View>
 
