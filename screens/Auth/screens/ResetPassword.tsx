@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import { LockClosedIcon, LockOpenIcon } from 'react-native-heroicons/outline';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import tw from '../../../lib/tailwind';
@@ -41,11 +42,17 @@ const ForgotPassword = () => {
           </View>
           <View style={tw`flex flex-col gap-4`}>
             <Input
+              leadingIcon={
+                <LockClosedIcon style={tw`flex w-6 h-6 text-gray-300`} />
+              }
               placeholder="New password"
               onChangeText={(text) => setEmail(text)}
               value={email}
             />
             <Input
+              leadingIcon={
+                <LockClosedIcon style={tw`flex w-6 h-6 text-gray-300`} />
+              }
               placeholder="Confirm new password"
               onChangeText={(text) => setEmail(text)}
               value={email}

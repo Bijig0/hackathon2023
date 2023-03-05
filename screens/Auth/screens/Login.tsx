@@ -12,7 +12,11 @@ import Input from '../../../components/Input';
 import tw from '../../../lib/tailwind';
 import globalstyle from '../../../styles/globalstyle';
 import Svg, { Circle } from 'react-native-svg';
-import { LockOpenIcon } from 'react-native-heroicons/outline';
+import {
+  EnvelopeIcon,
+  LockClosedIcon,
+  LockOpenIcon,
+} from 'react-native-heroicons/outline';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -44,6 +48,9 @@ const LoginScreen = () => {
           {/* input */}
           <View style={tw`mb-4`}>
             <Input
+              leadingIcon={
+                <EnvelopeIcon style={tw`flex w-6 h-6 text-gray-300`} />
+              }
               error="Error message"
               placeholder="Email"
               onChangeText={(text) => setEmail(text)}
@@ -55,7 +62,7 @@ const LoginScreen = () => {
           <View>
             <Input
               leadingIcon={
-                <LockOpenIcon style={tw`w-6 h-6 text-black bg-red-400`} />
+                <LockClosedIcon style={tw`flex w-6 h-6 text-gray-300`} />
               }
               error="Error message"
               placeholder="Password"
