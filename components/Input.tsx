@@ -13,11 +13,13 @@ interface Props {
   value: string;
   secureTextEntry?: boolean;
   placeholder?: string;
+  editable?: boolean;
 }
 
 const Input = ({
   label,
   trailingIcon,
+  editable = true,
   leadingIcon,
   error,
   touched,
@@ -35,13 +37,16 @@ const Input = ({
           <View style={tw`absolute top-1/4 left-3 z-40`}>{leadingIcon}</View>
         )}
         <TextInput
-          style={tw`bg-gray-100 border-2 rounded-md border-gray-300 py-2 px-3 pl-${
+          style={tw`bg-gray-100 border-2 rounded-md py-2 px-3 pl-${
             leadingIcon ? 12 : 3.5
-          } pr-${trailingIcon ? 12 : 3.5}`}
+          } pr-${trailingIcon ? 12 : 3.5} ${
+            editable ? 'border-gray-300' : 'border-transparent'
+          }`}
           onChangeText={onChangeText}
           value={value}
           secureTextEntry={secureTextEntry}
           placeholder={placeholder}
+          editable={editable}
         />
         {trailingIcon && (
           <View style={tw`absolute right-2 z-40`}>{trailingIcon}</View>
