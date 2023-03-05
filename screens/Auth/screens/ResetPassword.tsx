@@ -7,12 +7,17 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import {
+  ArrowLeftIcon,
+  LockClosedIcon,
+  LockOpenIcon,
+} from 'react-native-heroicons/outline';
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
 import tw from '../../../lib/tailwind';
 import globalstyle from '../../../styles/globalstyle';
 
-const ForgotPassword = () => {
+const ResetPassword = () => {
   const [email, setEmail] = useState('');
 
   const navigate = useNavigation();
@@ -24,8 +29,10 @@ const ForgotPassword = () => {
   return (
     <SafeAreaView style={globalstyle.droidSafeArea}>
       <View style={tw`flex-1 items-center bg-white`}>
-        <View style={tw`bg-white text-xl self-start ml-4 mt-8`}>
-          <Button onPress={() => navigate.goBack()}>Back</Button>
+        <View style={tw`self-start text-xl self-start ml-4 mt-8`}>
+          <Button variant="secondary" onPress={() => navigate.goBack()}>
+            <ArrowLeftIcon style={tw`h-6 w-6 text-black`} />
+          </Button>
         </View>
         {/* header */}
         <View style={tw`w-4/5 mt-8`}>
@@ -41,11 +48,17 @@ const ForgotPassword = () => {
           </View>
           <View style={tw`flex flex-col gap-4`}>
             <Input
+              leadingIcon={
+                <LockClosedIcon style={tw`flex w-6 h-6 text-gray-300`} />
+              }
               placeholder="New password"
               onChangeText={(text) => setEmail(text)}
               value={email}
             />
             <Input
+              leadingIcon={
+                <LockClosedIcon style={tw`flex w-6 h-6 text-gray-300`} />
+              }
               placeholder="Confirm new password"
               onChangeText={(text) => setEmail(text)}
               value={email}
@@ -60,4 +73,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ResetPassword;

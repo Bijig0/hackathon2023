@@ -32,12 +32,12 @@ const Input = ({
       {label && <Text style={tw`text-gray-800 text-lg mb-2`}>{label}</Text>}
       <View style={tw`relative`}>
         {leadingIcon && (
-          <View style={tw`absolute left-2 z-40`}>{leadingIcon}</View>
+          <View style={tw`absolute top-1/4 left-3 z-40`}>{leadingIcon}</View>
         )}
         <TextInput
           style={tw`bg-gray-100 border-2 rounded-md border-gray-300 py-2 px-3 pl-${
-            leadingIcon ? 10 : 3.5
-          } pr-${trailingIcon ? 10 : 3.5}`}
+            leadingIcon ? 12 : 3.5
+          } pr-${trailingIcon ? 12 : 3.5}`}
           onChangeText={onChangeText}
           value={value}
           secureTextEntry={secureTextEntry}

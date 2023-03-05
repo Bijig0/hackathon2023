@@ -1,12 +1,12 @@
-import { Text, View, FlatList, SectionList, StyleSheet } from "react-native";
-import tw from "../.././lib/tailwind";
-import { useFonts } from "expo-font";
-import React, { useCallback, useState, useContext, useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { Text, View, FlatList, SectionList, StyleSheet } from 'react-native';
+import tw from '../.././lib/tailwind';
+import { useFonts } from 'expo-font';
+import React, { useCallback, useState, useContext, useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import {
   BottomTabNavigationProp,
   createBottomTabNavigator,
-} from "@react-navigation/bottom-tabs";
+} from '@react-navigation/bottom-tabs';
 // import useMainAppIsReady from "../../hooks/useAppIsReady";
 import * as SplashScreen from "expo-splash-screen";
 import CameraScreen from "./CameraStack/Camera";

@@ -28,7 +28,7 @@ export const Button = ({
 
   switch (variant) {
     case 'primary':
-      selectedStyles.push(buttonStyles, tw`bg-blue-500`);
+      selectedStyles.push(buttonStyles, tw`bg-emerald-500`);
       break;
     case 'secondary':
       selectedStyles.push(buttonStyles, tw`bg-white`);

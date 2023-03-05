@@ -2,6 +2,12 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { SafeAreaView, Image } from "react-native";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import {
+  ArrowLeftIcon,
+  EnvelopeIcon,
+  LockClosedIcon,
+  UserIcon,
+} from 'react-native-heroicons/outline';
 import Button from "../../../components/Button";
 import Input from "../../../components/Input";
 import tw from "../../../lib/tailwind";
@@ -27,8 +33,10 @@ const SignUp = () => {
   return (
     <SafeAreaView style={globalstyle.droidSafeArea}>
       <View style={tw`flex-1 items-center bg-white`}>
-        <View style={tw`bg-white text-xl self-start ml-4 mt-8`}>
-          <Button onPress={() => navigate.goBack()}>Back</Button>
+        <View style={tw`text-xl self-start ml-4 mt-8`}>
+          <Button variant="secondary" onPress={() => navigate.goBack()}>
+            <ArrowLeftIcon style={tw`h-6 w-6 text-black`} />
+          </Button>
         </View>
         <View style={tw`w-4/5 mt-8`}>
           {/* header */}
@@ -40,18 +48,21 @@ const SignUp = () => {
           {/* input */}
           <View style={tw`flex flex-col gap-4`}>
             <Input
+              leadingIcon={<UserIcon style={tw`w-6 h-6 text-gray-300`} />}
               error="Error message"
               placeholder="Name"
               onChangeText={(text) => setName(text)}
               value={name}
             />
             <Input
+              leadingIcon={<EnvelopeIcon style={tw`w-6 h-6 text-gray-300`} />}
               error="Error message"
               placeholder="Email"
               onChangeText={(text) => setEmail(text)}
               value={email}
             />
             <Input
+              leadingIcon={<LockClosedIcon style={tw`w-6 h-6 text-gray-300`} />}
               placeholder="Password"
               secureTextEntry
               onChangeText={(text) => setPassword(text)}

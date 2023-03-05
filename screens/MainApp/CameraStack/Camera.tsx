@@ -1,5 +1,5 @@
-import { Camera, CameraType } from "expo-camera";
-import { useState, useRef } from "react";
+import { Camera, CameraType } from 'expo-camera';
+import { useState, useRef } from 'react';
 import {
   Button,
   FlatList,
@@ -9,23 +9,23 @@ import {
   View,
   Dimensions,
   ScrollView,
-} from "react-native";
-import AppBox from "../../../components/AppBox";
-import CameraButton from "../../../components/CameraButton";
-import Choice from "../../../components/Choice";
-import tw from "../../../lib/tailwind";
-import { useNavigation } from "@react-navigation/native";
-import CaptureSquare from "../../../assets/icons/capture-square.svg";
-import TickIcon from "../../../assets/icons/tick-svgrepo-com.svg";
-import BackIcon from "../../../assets/icons/back-svgrepo-com (2).svg";
-import CaptureRectangle from "../../../assets/icons/capture-rectangle.svg";
-import { BlurView } from "expo-blur";
-import { useWindowDimensions } from "react-native";
+} from 'react-native';
+import AppBox from '../../../components/AppBox';
+import CameraButton from '../../../components/CameraButton';
+import Choice from '../../../components/Choice';
+import tw from '../../../lib/tailwind';
+import { useNavigation } from '@react-navigation/native';
+import CaptureSquare from '../../../assets/icons/capture-square.svg';
+import TickIcon from '../../../assets/icons/tick-svgrepo-com.svg';
+import BackIcon from '../../../assets/icons/back-svgrepo-com (2).svg';
+import CaptureRectangle from '../../../assets/icons/capture-rectangle.svg';
+import { BlurView } from 'expo-blur';
+import { useWindowDimensions } from 'react-native';
 
 const categories = [
-  "Foods and drinks",
-  "Alcohol",
-  "Plants and beverages",
+  'Foods and drinks',
+  'Alcohol',
+  'Plants and beverages',
 ] as const;
 
 type Category = typeof categories[number];
@@ -51,7 +51,7 @@ export default function App() {
     // Camera permissions are not granted yet
     return (
       <View>
-        <Text style={{ textAlign: "center" }}>
+        <Text style={{ textAlign: 'center' }}>
           We need your permission to show the camera
         </Text>
         <Button onPress={requestPermission} title="grant permission" />
@@ -59,10 +59,10 @@ export default function App() {
     );
   }
 
-  const screenWidth = Dimensions.get("window").width;
+  const screenWidth = Dimensions.get('window').width;
 
   console.log({ screenWidth });
-  const screenHeight = Dimensions.get("window").height;
+  const screenHeight = Dimensions.get('window').height;
 
   const captureRectangleWidth = 500;
 
