@@ -92,7 +92,10 @@ const Profile = () => {
             </View>
           </View>
           {isEdit ? (
-            <Button onPress={() => setIsEdit(false)}>Cancel</Button>
+            <View style={tw`flex gap-4`}>
+              <Button onPress={() => setIsEdit(false)}>Save</Button>
+              <Button onPress={() => setIsEdit(false)}>Cancel</Button>
+            </View>
           ) : (
             <View style={tw`flex gap-4`}>
               <Button onPress={() => setIsEdit(true)}>Edit Profile</Button>
