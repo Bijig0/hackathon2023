@@ -1,23 +1,24 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
+import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
   SafeAreaView,
-} from 'react-native';
-import Button from '../../../components/Button';
-import Input from '../../../components/Input';
-import tw from '../../../lib/tailwind';
-import globalstyle from '../../../styles/globalstyle';
-import Svg, { Circle } from 'react-native-svg';
-import { LockOpenIcon } from 'react-native-heroicons/outline';
+} from "react-native";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
+import tw from "../../../lib/tailwind";
+import globalstyle from "../../../styles/globalstyle";
+import Svg, { Circle } from "react-native-svg";
+import { LockOpenIcon } from "react-native-heroicons/outline";
+import OAuthBar from "../../../components/OAuthBar";
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
 
   const [isTouch, setIsTouch] = useState(false);
 
@@ -54,9 +55,9 @@ const LoginScreen = () => {
           {/* input */}
           <View>
             <Input
-              leadingIcon={
-                <LockOpenIcon style={tw`w-6 h-6 text-black bg-red-400`} />
-              }
+              // leadingIcon={
+              //   <LockOpenIcon style={tw`w-6 h-6 text-black bg-red-400`} />
+              // }
               error="Error message"
               placeholder="Password"
               onChangeText={(text) => setPassword(text)}
@@ -78,11 +79,7 @@ const LoginScreen = () => {
             <View style={tw`border-b-gray-300 border-b flex-1`}></View>
           </View>
           {/* Oauth */}
-          <View style={tw`flex flex-row justify-center gap-6`}>
-            <View style={tw`w-12 h-12 bg-black rounded-full`}></View>
-            <View style={tw`w-12 h-12 bg-black rounded-full`}></View>
-            <View style={tw`w-12 h-12 bg-black rounded-full`}></View>
-          </View>
+          <OAuthBar />
         </View>
       </View>
     </SafeAreaView>

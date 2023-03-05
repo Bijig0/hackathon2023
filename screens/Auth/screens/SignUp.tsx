@@ -1,18 +1,22 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import Button from '../../../components/Button';
-import Input from '../../../components/Input';
-import tw from '../../../lib/tailwind';
-import globalstyle from '../../../styles/globalstyle';
+import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
+import { SafeAreaView, Image } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
+import tw from "../../../lib/tailwind";
+import globalstyle from "../../../styles/globalstyle";
+import GoogleIcon from "../../../assets/logos/Google.png";
+import FacebookIcon from "../../../assets/logos/Facebook.png";
+import AppleIcon from "../../../assets/logos/Apple.png";
+import OAuthBar from "../../../components/OAuthBar";
 
 const SignUp = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigation();
 
@@ -67,11 +71,7 @@ const SignUp = () => {
             <View style={tw`border-b-gray-300 border-b flex-1`}></View>
           </View>
           {/* Oauth */}
-          <View style={tw`flex flex-row justify-center gap-6`}>
-            <View style={tw`w-12 h-12 bg-black rounded-full`}></View>
-            <View style={tw`w-12 h-12 bg-black rounded-full`}></View>
-            <View style={tw`w-12 h-12 bg-black rounded-full`}></View>
-          </View>
+          <OAuthBar />
         </View>
       </View>
     </SafeAreaView>

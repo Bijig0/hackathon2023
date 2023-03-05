@@ -14,6 +14,9 @@ import Home from "./screens/Home/Home";
 import Profile from "./screens/Profile";
 import Details from "./screens/Details";
 import CameraStack from "./CameraStack/CameraStack";
+import HomeIcon from "../../assets/icons/home-svgrepo-com (1).svg";
+import UserIcon from "../../assets/icons/user-svgrepo-com (1).svg";
+import CameraIcon from "../../assets/icons/camera-svgrepo-com.svg";
 
 // SplashScreen.preventAutoHideAsync()
 
@@ -34,6 +37,8 @@ export default function MainApp() {
     prepare();
   }, [mainAppIsReady]);
 
+  const tabBarIconSize = 25;
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -43,18 +48,46 @@ export default function MainApp() {
       backBehavior="order"
       initialRouteName="Home"
     >
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Details" component={Details} />
       <Tab.Screen
-        name="CameraScreen"
+        options={{
+          tabBarIcon: () => (
+            <HomeIcon width={tabBarIconSize} height={tabBarIconSize} />
+          ),
+        }}
+        name="Home"
+        component={Home}
+      />
+      {/* <Tab.Screen
+        options={{
+          tabBarIcon: () => (
+            <HomeIcon width={tabBarIconSize} height={tabBarIconSize} />
+          ),
+        }}
+        name="Details"
+        component={Details}
+      /> */}
+      <Tab.Screen
+        name="CameraStack"
         component={CameraStack}
         navigationKey="CameraScreen"
         options={{
+          tabBarLabel: "Camera",
           lazy: false,
           tabBarStyle: { display: "none" },
+          tabBarIcon: () => (
+            <CameraIcon width={tabBarIconSize} height={tabBarIconSize} />
+          ),
         }}
       />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen
+        options={{
+          tabBarIcon: () => (
+            <UserIcon width={tabBarIconSize} height={tabBarIconSize} />
+          ),
+        }}
+        name="Profile"
+        component={Profile}
+      />
     </Tab.Navigator>
   );
 }

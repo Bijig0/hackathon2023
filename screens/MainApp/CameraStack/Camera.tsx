@@ -32,10 +32,15 @@ type Category = typeof categories[number];
 
 export default function App() {
   const [type, setType] = useState(CameraType.back);
-  const flatListRef = useRef(null)
+  const flatListRef = useRef(null);
   const [selectedCategory, setSelectedCategory] = useState<Category>("Alcohol");
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const navigation = useNavigation();
+
+  const scrollToIndex = (index: number) => {
+    // @ts-ignore
+    flatListRef.current.scrollToIndex({ index: index, animated: true });
+  };
 
   if (!permission) {
     // Camera permissions are still loading
@@ -67,6 +72,8 @@ export default function App() {
 
   const onSelectCategory = (category: Category) => {
     setSelectedCategory(category);
+    // console.log(`index is ${categories.indexOf(category)}`)
+    scrollToIndex(categories.indexOf(category));
   };
 
   // @ts-ignore
@@ -107,10 +114,14 @@ export default function App() {
           <View style={tw`flex-1 mb-4`}>
             <FlatList
               data={categories}
-              style={tw`relative left-4 mt-4`}
+              style={tw`relative left-4 w-full border-dashed border-2 border-red-500 mt-4 overflow-visible`}
               horizontal
               renderItem={renderItem}
               ref={flatListRef}
+              initialScrollIndex={0}
+              keyExtractor={(item) => {
+                return item;
+              }}
             />
           </View>
 
