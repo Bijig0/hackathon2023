@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Image, SafeAreaView, Text, View } from 'react-native';
 import {
+  ArrowLeftIcon,
   EnvelopeIcon,
   PhoneIcon,
   UserIcon,
@@ -10,6 +11,7 @@ import Input from '../../../components/Input';
 import tw from '../../../lib/tailwind';
 import globalstyle from '../../../styles/globalstyle';
 import blankProfile from '../../../assets/profile.png';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {};
 
@@ -24,12 +26,22 @@ const Profile = () => {
 
   const [isEdit, setIsEdit] = useState(false);
 
+  const navigate = useNavigation();
+
   return (
     <SafeAreaView style={globalstyle.droidSafeArea}>
       <View style={tw`flex-1 flex mx-auto w-4/5 py-8`}>
+        <View style={tw`absolute -left-2 mt-12 z-10`}>
+          <Button style={tw`bg-transparent`} onPress={() => navigate.goBack()}>
+            <ArrowLeftIcon style={tw`h-12 w-12 text-black`} />
+          </Button>
+        </View>
         <View style={tw`flex flex-1 flex-col justify-between gap-4`}>
           {/* avatar */}
           <View style={tw`flex items-center`}>
+            <View
+              style={tw`flex -top-85 absolute w-[500px] h-[500px] rounded-full bg-emerald-400`}
+            ></View>
             <Image
               source={blankProfile}
               style={tw`w-30 h-30 border-emerald-400 border-8 rounded-full`}
