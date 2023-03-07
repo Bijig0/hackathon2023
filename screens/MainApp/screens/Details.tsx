@@ -13,7 +13,7 @@ import IconBar from "../../../components/IconBar";
 type Props = {};
 
 const Details = () => {
-  const renderItem = ({item: text}) => {
+  const renderItem = ({ item: text }) => {
     return <Text style={tw`text-4 ml-2 mb-1`}>{`\u2022 ${text}`}</Text>;
   };
 
@@ -27,9 +27,7 @@ const Details = () => {
           uri: "https://i.pinimg.com/originals/70/77/26/707726398081c5ffbc5c9cd02076ae46.jpg",
         }}
       />
-      <Text style={tw`text-grey-100 font-bold text-12 my-2`}>
-        It's A Paper Cup
-      </Text>
+      <Text style={tw`font-bold text-12 my-2`}>It's A Paper Cup</Text>
 
       <View style={tw`flex-row items-center`}>
         <RecyclingBinIcon width={20} height={20} />

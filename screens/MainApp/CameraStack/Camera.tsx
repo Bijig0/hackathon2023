@@ -25,7 +25,7 @@ import LoadingScreen from "../LoadingScreen";
 
 type FlatListState = "left" | "center" | "right";
 
-const categories = ["Foods", "Electronics", "Green Waste"] as const;
+const categories = ["Foods", "Electronics", "Recyclables"] as const;
 
 type Category = typeof categories[number];
 
@@ -43,7 +43,7 @@ export default function App() {
         navigation.navigate("Details");
         setIsLoading(!isLoading);
       }, 750);
-    }, 2000);
+    }, 10000);
 
     console.log("im being ran");
 
@@ -61,7 +61,7 @@ export default function App() {
     flatListState = "center";
   } else if (selectedCategory === "Foods") {
     flatListState = "left";
-  } else if (selectedCategory === "Green Waste") {
+  } else if (selectedCategory === "Recyclables") {
     flatListState = "right";
   }
 
@@ -140,7 +140,7 @@ export default function App() {
               <FlatList
                 data={categories}
                 style={tw`relative ${
-                  flatListState === "left" ? "left-33" : "right-26"
+                  flatListState === "left" ? "left-32" : "right-26"
                 } ${
                   flatListState === "center" ? "left-7" : ""
                 } w-full mt-4 overflow-visible`}

@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import { Image, SafeAreaView, Text, View } from 'react-native';
+import React, { useState } from "react";
+import { Image, SafeAreaView, Text, View } from "react-native";
 import {
   ArrowLeftIcon,
   EnvelopeIcon,
   PhoneIcon,
   UserIcon,
-} from 'react-native-heroicons/outline';
-import Button from '../../../components/Button';
-import Input from '../../../components/Input';
-import tw from '../../../lib/tailwind';
-import globalstyle from '../../../styles/globalstyle';
-import blankProfile from '../../../assets/profile.png';
-import { useNavigation } from '@react-navigation/native';
+} from "react-native-heroicons/outline";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
+import tw from "../../../lib/tailwind";
+import globalstyle from "../../../styles/globalstyle";
+import blankProfile from "../../../assets/profile.png";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {};
 
 const Profile = () => {
-  const [name, setName] = useState('John Smith');
+  const [name, setName] = useState("John Smith");
 
-  const [email, setEmail] = useState('john_smith@gmail.com');
+  const [email, setEmail] = useState("john_smith@gmail.com");
 
-  const [phone, setPhone] = useState('061-123-45678');
+  const [phone, setPhone] = useState("061-123-45678");
 
   const [isTouch, setIsTouch] = useState(false);
 
@@ -35,7 +35,7 @@ const Profile = () => {
           <View style={tw`absolute -left-2 mt-12 z-10`}>
             <Button
               style={tw`bg-transparent`}
-              onPress={() => navigate.goBack()}
+              onPress={() => navigate.navigate("MainApp", { screen: "Home" })}
             >
               <ArrowLeftIcon style={tw`h-12 w-12 text-black`} />
             </Button>
@@ -64,7 +64,7 @@ const Profile = () => {
                 onChangeText={(text) => setName(text)}
                 value={name}
                 touched={isTouch}
-                editable={isEdit}
+                editable
               />
             </View>
             <View>
@@ -78,7 +78,7 @@ const Profile = () => {
                 onChangeText={(text) => setEmail(text)}
                 value={email}
                 touched={isTouch}
-                editable={isEdit}
+                editable
               />
             </View>
             <View>
@@ -92,7 +92,7 @@ const Profile = () => {
                 onChangeText={(text) => setPhone(text)}
                 value={phone}
                 touched={isTouch}
-                editable={isEdit}
+                editable
               />
             </View>
           </View>
@@ -104,7 +104,11 @@ const Profile = () => {
           ) : (
             <View style={tw`flex gap-4`}>
               <Button onPress={() => setIsEdit(true)}>Edit Profile</Button>
-              <Button>Logout</Button>
+              <Button
+                onPress={() => navigate.navigate("Auth", { screen: "Welcome" })}
+              >
+                Logout
+              </Button>
             </View>
           )}
         </View>
